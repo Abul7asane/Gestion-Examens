@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter une question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 600px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+      fieldset {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+        legend {
+          font-weight: bold;
+        }
+        fieldset div {
+          margin-bottom: 10px;
+        }
+        fieldset input[type="text"] {
+          width: 80%;
+          display: inline-block;
+        }
+        fieldset input[type="checkbox"] {
+          width: 10%;
+          margin-right: 10px;
+        }
+  </style>
+</head>
+
+<body>
+  <h1>Ajouter une question à un examen</h1>
+  <form id="form-question">
+
+    <!-- Champ : nom du propriétaire -->
+    <label for="proprietaire">Nom du propriétaire de l'examen :</label>
+    <input type="text" id="proprietaire" name="proprietaire" required>
+
+    <!-- Champ : nom de l'examen -->
+    <label for="examen">Nom de l'examen :</label>
+    <input type="text" id="examen" name="examen" required>
+
+    <!-- Énoncé de la question -->
+    <label for="enonce">Énoncé de la question :</label>
+    <textarea id="enonce" name="enonce" required></textarea>
+
+    <!-- Durée en secondes et points -->
+    <label for="duree">Durée (secondes) :</label>
+    <input type="number" id="duree" name="duree" min="1" required>
+    <label for="points">Points :</label>
+    <input type="number" id="points" name="points" min="0" step="0.5" required>
+
+    <!-- Conteneur pour les propositions -->
+     <fieldset id="field-propossition" style="display: none;">
+      <legend>Propositions :</legend>
+      <div id="propositions"></div>
+    </fieldset>
+
+    <!-- Bouton pour ajouter une proposition -->
+    <button type="button" id="add-proposition">Ajouter une proposition</button>
+
+    <button type="submit">Ajouter la question</button>
+  </form>
+  <script src="ajouter-question.js"></script>
+</body>
+
+</html>
