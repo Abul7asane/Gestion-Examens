@@ -64,5 +64,6 @@ document.getElementById('form-question').addEventListener('submit', function(e) 
  
   alert('Question ajoutée avec succès !'); 
   this.reset(); 
-  document.getElementById('propositions').innerHTML = ''; 
+  document.getElementById('propositions').innerHTML = '';
+  document.getElementById('field-propossition').style.display = 'none';
 });
