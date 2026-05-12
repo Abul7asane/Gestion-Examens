@@ -4,6 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Ajouter un Examen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,7 +43,7 @@
 
   <form id="form-examen">
     <!-- Champ : nom de l'examen -->
-   <label for="nom">Nom de l'examen :</label>
+    <label for="nom">Nom de l'examen :</label>
     <input type="text" id="nom" name="nom" required>
 
     <!-- Champ : durée en minutes -->
