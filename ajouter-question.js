@@ -21,8 +21,8 @@ document.getElementById('add-proposition').addEventListener('click', () => {
   // Ajouter le conteneur dans la zone des propositions 
   document.getElementById('propositions').appendChild(propositionDiv);
   // Afficher le champ de proposition s'il est caché
-  if(document.getElementById('field-propossition').style.display === 'none') {
-    document.getElementById('field-propossition').style.display = 'block';
+  if(document.getElementById('field-proposition').style.display === 'none') {
+    document.getElementById('field-proposition').style.display = 'block';
   }
 });
 
@@ -63,8 +63,8 @@ document.getElementById('form-question').addEventListener('submit', function(e) 
   localStorage.setItem(key, JSON.stringify(examens));
 
   alert('Question ajoutée avec succès !');
-  document.getElementById('field-propossition').style.display = 'none';
+
   this.reset(); 
   document.getElementById('propositions').innerHTML = '';
-  document.getElementById('field-propossition').style.display = 'none';
+  document.getElementById('field-proposition').style.display = 'none';
 });
