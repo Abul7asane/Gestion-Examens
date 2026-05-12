@@ -51,18 +51,19 @@ document.getElementById('form-question').addEventListener('submit', function(e) 
  
   // Trouver l'examen par son nom 
   const exam = examens.find(examen => examen.nom === nomExamen);
- 
   // Vérifier que l'examen existe 
   if (!exam) { 
     alert('Examen non trouvé pour ce propriétaire !');
     return; 
   } 
- 
   // Construire la question et l'ajouter 
   const question = { enonce, duree, points, propositions };
   exam.questions.push(question);
- 
-  alert('Question ajoutée avec succès !'); 
+  
+  localStorage.setItem(key, JSON.stringify(examens));
+
+  alert('Question ajoutée avec succès !');
+  document.getElementById('field-propossition').style.display = 'none';
   this.reset(); 
   document.getElementById('propositions').innerHTML = ''; 
 });
