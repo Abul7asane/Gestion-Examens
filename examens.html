@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des examens</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 200px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Examens enregistrés</h1>
+  <input type="text" id="proprietaire" placeholder="Nom du propriétaire">
+  <button id="afficher">Afficher</button>
+  <div id="resultat"></div>
+
+  <script>
+    document.getElementById('afficher').addEventListener('click', () => {
+
+      // Lire le nom du propriétaire 
+      const proprietaire = document.getElementById('proprietaire').value.trim();
+
+      // Récupérer les examens depuis le localStorage 
+      const exams = JSON.parse(localStorage.getItem('examens_' + proprietaire)) || [];
+
+      // Vider l'affichage précédent 
+      const resultatDiv = document.getElementById('resultat');
+      resultatDiv.innerHTML = '';
+
+      // Cas où aucun examen n'est trouvé 
+      if (exams.length === 0) {
+        resultatDiv.textContent = 'Aucun examen trouvé pour ce propriétaire.';
+        return;
+      }
+
+      // Afficher chaque examen et ses questions 
+      exams.forEach((exam, i) => {
+        // Afficher le nom de l'examen 
+        const h2 = document.createElement('h2');
+        h2.textContent = exam.nom;
+        resultatDiv.appendChild(h2);
+
+        // Afficher les questions de l'examen 
+        const ul = document.createElement('ul');
+        exam.questions.forEach(q => {
+          const li = document.createElement('li');
+          li.innerHTML = `<strong>Énoncé:</strong> ${q.enonce} <br>
+                          <strong>Durée:</strong> ${q.duree} secondes <br>
+                          <strong>Points:</strong> ${q.points} <br>
+                          <strong>Propositions:</strong><br>
+                          <ul>${q.propositions.map(p => `<li>${p.checked ? '[X]' : '[ ]'} ${p.text}</li>`).join('')}</ul>`;
+          ul.appendChild(li);
+        });
+        resultatDiv.appendChild(ul);
+      });
+    }); 
+  </script>
+</body>
+
+</html>
